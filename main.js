@@ -18,6 +18,27 @@ document.getElementById("poke-name").addEventListener("change", function (){
 
         document.getElementById("poke-photo").src = data.sprites.front_shiny
 
+        document.getElementById("poke-ID").innerHTML = data.id
+
+
+        let moves = data.moves
+
+        document.getElementById("target").innerHTML = ""
+
+
+        for (let i = 0; i<4; i++){
+
+            let clone = template.content.cloneNode(true);
+            clone.querySelector(".move").innerText = moves[i].move.name
+            document.getElementById("target").appendChild(clone)
+        }
+
+
+    if (evolutionData.chain.evolves_to.length > 0){
+        document.getElementById("poke-evolution").innerHTML = evolutionData.chain.evolves_to[0].species.name
+    }    else {
+        document.getElementById("poke-evolution").innerHTML = "no revolutions"
+    }
 
 
 
