@@ -20,6 +20,7 @@ document.getElementById("poke-name").addEventListener("change", function () {
 
         document.getElementById("poke-photo").src = data.sprites.front_shiny
 
+
         document.getElementById("poke-ID").innerHTML = data.id + " " + data.name;
 
 
@@ -37,10 +38,14 @@ document.getElementById("poke-name").addEventListener("change", function () {
 
         let evolution = document.getElementById("poke-evolution");
         let evolution_image = document.getElementById("poke_evolve_from");
+        //console.log(pokemon_evol, null, pokemon_evol==null)
         if (pokemon_evol !== null){
+            evolution_image.src = await get_photo_url(pokemon_evol.name) //"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png" ;
             evolution.innerText = pokemon_evol.name;
-        } else if (pokemon_evol === null) {
-            evolution.innertext = "No previous evolution to show!"
+
+        } else {
+            evolution_image.src = ""
+            evolution.innerText = "No previous evolution to show!"
         }
 
 
@@ -52,6 +57,19 @@ document.getElementById("poke-name").addEventListener("change", function () {
         }
 */
     }
+
+    async function get_photo_url(poke_name){
+        let api_url = `https://pokeapi.co/api/v2/pokemon/${poke_name}`;
+        console.log(api_url)
+        let api = await fetch(api_url);
+        let data = await api.json();
+        console.log("function Result = " + data.sprites.front_shiny)
+        return data.sprites.front_shiny
+    }
+
+    console.log(get_photo_url("charmander"))
+
+
 
     poke_api();
 
