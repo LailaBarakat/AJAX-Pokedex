@@ -16,8 +16,14 @@ document.getElementById("poke-name").addEventListener("change", function () {
         console.log(evolutionData);
         let pokemon_evol = evolutionData.evolves_from_species;
 
-        document.getElementById("poke-photo").src = data.sprites.front_shiny;
-        document.getElementById("poke-ID").innerHTML = data.id + "  " + data.name;
+
+        document.getElementById("poke-photo").src = data.sprites.front_shiny
+
+
+        document.getElementById("poke-ID").innerHTML = data.id + " " + data.name;
+
+        
+
 
 
         let moves = data.moves;
@@ -31,11 +37,16 @@ document.getElementById("poke-name").addEventListener("change", function () {
         let evolution = document.querySelector("div h4");
         let evolution_image = document.getElementById("poke_evolve_from");
 
-        if (pokemon_evol !== null) {
-            await fetch_evolve_image();
+        //console.log(pokemon_evol, null, pokemon_evol==null)
+        if (pokemon_evol !== null){
+            evolution_image.src = await get_photo_url(pokemon_evol.name) //"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/4.png" ;
+            evolution.innerText = pokemon_evol.name;
+
         } else {
-            evolution_image.src = "";
-            evolution.innerHTML = "No previous evolution!";
+            evolution_image.src = ""
+            evolution.innerText = "No previous evolution to show!"
+
+       
         }
 
         async function fetch_evolve_image() {
@@ -56,6 +67,19 @@ document.getElementById("poke-name").addEventListener("change", function () {
         }
 
     }
+
+    async function get_photo_url(poke_name){
+        let api_url = `https://pokeapi.co/api/v2/pokemon/${poke_name}`;
+        console.log(api_url)
+        let api = await fetch(api_url);
+        let data = await api.json();
+        console.log("function Result = " + data.sprites.front_shiny)
+        return data.sprites.front_shiny
+    }
+
+    console.log(get_photo_url("charmander"))
+
+
 
     poke_api();
 
