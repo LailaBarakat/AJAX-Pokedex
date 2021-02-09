@@ -57,7 +57,7 @@ p {
     margin-left: 532px;
     margin-top: 195px;
     color: whitesmoke;
-    font-size: 32px;
+    font-size: 24px;
     text-align: center;
 }
 
@@ -73,6 +73,7 @@ p {
     margin-left: 532px;
     margin-top: 460px;
     color: whitesmoke;
+    text-align: center;
 }
 
 .poke_id {
@@ -86,4 +87,11 @@ p {
     margin-left: 92px;
     margin-top: 564px;
     color: black;
+    text-align: center;
+}
+
+.poke_evolve_from{
+    display: block;
+    float: left;
+    margin: auto;
 }
