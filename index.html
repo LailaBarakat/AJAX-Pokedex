@@ -9,20 +9,30 @@
 
 <body>
 <div class="grid-container">
+    <!--<h1>PokeDex</h1>-->
     <div class="grid-item">
         <p>Look for your Pokemon by name or ID: </p><input type="text" id="poke-name">
     </div>
-    <div class="sprite">
-        <img src="" alt="pokemon image" id="poke-photo"/>
-    </div>
-    <div class="grid-item">
-        <img src="pokedex.png" id="pokedex"/>
-        <div class="moves">Moves</div>
-        <div class="evoluti">Evolutions</div>
-        <div class="poke_id">Pokemon ID</div>
-    </div>
 
+    <div class="grid-item">
+        <div class="sprite">
+            <img src="" alt="pokemon image" id="poke-photo"/>
+        </div>
+        <img id= "pokedex" src="pokedex.png"/>
+        <div class="moves" id="poke-moves">Moves
+            <template id="template">
+                <li class="move"></li>
+            </template>
+            <ol id="target"></ol>
+        </div>
+        <div class="evoluti" id="poke-evolution">Evolutions</div>
+        <div class="poke_id" id="poke-ID">Pokemon ID</div>
+    </div>
 </div>
+
 <script src="main.js/"></script>
+
+
+
 </body>
 </html>
